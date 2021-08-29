@@ -1,10 +1,12 @@
 package ru.netology.manager;
 
+import lombok.Data;
 import ru.netology.repository.ProductRepository;
 import ru.netology.domain.Product;
 import ru.netology.domain.Book;
 import ru.netology.domain.Smartphone;
 
+@Data
 public class ProductManager {
     private ProductRepository repository;
 
@@ -12,12 +14,8 @@ public class ProductManager {
         this.repository = repository;
     }
 
-    public ProductRepository getRepository() {
-        return repository;
-    }
-
-    public void setRepository(ProductRepository repository) {
-        this.repository = repository;
+    public void add(Product item) {
+        repository.save(item);
     }
 
     public Product[] searchBy(String text) {
